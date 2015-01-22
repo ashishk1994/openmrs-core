@@ -54,6 +54,7 @@ public class AddPersonController extends SimpleFormController {
 	private final String PERSON_EDIT_URL = "/admin/person/person.form";
 	
 	private final String FORM_ENTRY_ERROR_URL = "/admin/person/entryError";
+<<<<<<< HEAD
 
 	/** Keys for this class */
         private static final String NAME = "name";      
@@ -70,6 +71,9 @@ public class AddPersonController extends SimpleFormController {
 
         private static final String  VIEWTYPE = "viewType";
 
+=======
+	
+>>>>>>> parent of 33b5731... First
 	private boolean invalidAgeFormat = false;
 	
 	/**
