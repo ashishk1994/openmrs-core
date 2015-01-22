@@ -13,6 +13,7 @@
  */
 package org.openmrs.api.db.hibernate;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -75,8 +76,11 @@ public class HibernateUserDAO implements UserDAO {
 		
 		// only change the user's password when creating a new user
 		boolean isNewUser = user.getUserId() == null;
-		
+		System.out.println("\n\nNew USer\n\n");
+		System.out.println(user.getUserId());	
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
+		System.out.println("\n\nadftersave USer\n\n");
+		System.out.println(user.getUserId());	
 		
 		if (isNewUser && password != null) {
 			//update the new user with the password
@@ -86,6 +90,7 @@ public class HibernateUserDAO implements UserDAO {
 			updateUserPassword(hashedPassword, salt, Context.getAuthenticatedUser().getUserId(), new Date(), user
 			        .getUserId());
 		}
+		System.out.println("\n\n\n\nGreen Buildings\n\n\n\n");
 		
 		return user;
 	}
@@ -279,13 +284,39 @@ public class HibernateUserDAO implements UserDAO {
 	 * @param userId2
 	 */
 	private void updateUserPassword(String newHashedPassword, String salt, Integer changedBy, Date dateChanged,
-	        Integer userIdToChange) {
+	        Integer userIdToChange){
+		System.out.println(userIdToChange);
+		System.out.println("\n\n\n\nAshish-OpenMRS\n\n\n\n");
 		User changeForUser = getUser(userIdToChange);
+		System.out.println(changeForUser);
+		System.out.println("\n\n\n\nAshish-OpenMRS\n\n\n\n");
+		
 		if (changeForUser == null) {
+			System.out.println("\n\n\n\nININININ\n\n\n\n");
 			throw new DAOException("Couldn't find user to set password for userId=" + userIdToChange);
 		}
 		User changedByUser = getUser(changedBy);
+		System.out.println("\n\n\nCganded By User:\n\n");
+		System.out.println(changedBy);
+		if (changeForUser == null) {
+			System.out.println("\n\n\n\nININININ\n\n\n\n");
+			throw new DAOException("Couldn't find user to set password for userId=" + userIdToChange);
+		}
 		LoginCredential credentials = getLoginCredential(changeForUser);
+
+		//System.out.println(userIdToChange);
+		//System.out.println("\n\n\n\nAshish-OpenMRS\n\n\n\n");
+		//System.out.println(credentials);
+		//System.out.println("\n\n\n\nAshish-OpenMRS\n\n\n\n");
+		//System.out.println(changeForUser);
+		if(credentials==null)
+		{
+			System.out.println("\n\n\nCredentials\n\n\n");
+//			throw new DAOException("Couldn't find user to set password for userId=" + userIdToChange);
+		}	
+		System.out.println("\n\n\n\nAshish-OpenMRS\n\n\n\n");
+		//System.out.println("\n\n\n");
+
 		credentials.setUserId(userIdToChange);
 		credentials.setHashedPassword(newHashedPassword);
 		credentials.setSalt(salt);
@@ -467,7 +498,10 @@ public class HibernateUserDAO implements UserDAO {
 	 * @see org.openmrs.api.db.UserDAO#getLoginCredential(org.openmrs.User)
 	 */
 	public LoginCredential getLoginCredential(User user) {
-		return (LoginCredential) sessionFactory.getCurrentSession().get(LoginCredential.class, user.getUserId());
+		System.out.println(user.getUserId());
+		System.out.println("\n\n\n");
+		LoginCredential cr = (LoginCredential) sessionFactory.getCurrentSession().get(LoginCredential.class, user.getUserId());
+		return cr;
 	}
 	
 	/**

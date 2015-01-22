@@ -293,7 +293,7 @@
  	</c:if>
 
 	<br/>
-	
+	asdasdf
 	<input type="submit" id="saveButton" name="action" value="<openmrs:message code="User.save"/>" />
 	
 	<c:if test="${user.userId != null}">

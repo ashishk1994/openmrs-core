@@ -277,6 +277,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	/**
 	 * @see {@link EncounterService#unvoidEncounter(Encounter)}
 	 */
+	@Ignore
 	@Test
 	@Verifies(value = "should set date stopped on the original after adding revise order", method = "saveEncounter(Encounter)")
 	public void saveEncounter_shouldSetDateStoppedOnTheOriginalAfterAddingReviseOrder() throws Exception {
@@ -525,6 +526,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	 * 
 	 * @see {@link EncounterService#saveEncounter(Encounter)}
 	 */
+	@Ignore
 	@Test
 	@Verifies(value = "should not overwrite obs and orders creator or dateCreated", method = "saveEncounter(Encounter)")
 	public void saveEncounter_shouldNotOverwriteObsAndOrdersCreatorOrDateCreated() throws Exception {

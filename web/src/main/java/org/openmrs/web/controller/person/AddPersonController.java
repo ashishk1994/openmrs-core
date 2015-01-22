@@ -54,7 +54,7 @@ public class AddPersonController extends SimpleFormController {
 	private final String PERSON_EDIT_URL = "/admin/person/person.form";
 	
 	private final String FORM_ENTRY_ERROR_URL = "/admin/person/entryError";
-	
+
 	private boolean invalidAgeFormat = false;
 	
 	/**

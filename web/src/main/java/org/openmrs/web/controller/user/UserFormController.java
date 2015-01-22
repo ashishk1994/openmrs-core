@@ -174,7 +174,6 @@ public class UserFormController {
 			us.unretireUser(user);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "User.unRetiredMessage");
 		} else {
-			
 			// check if username is already in the database
 			if (us.hasDuplicateUsername(user)) {
 				errors.rejectValue("username", "error.username.taken");
